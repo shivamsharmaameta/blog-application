@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}TECH BLOG{% endblock title %}
+{% block content %}
+<div class="container mt-2">
+    <h1 class="text-center alert alert-primary">TECH BLOG HOME PAGE</h1>
+    {% if request.user.is_authenticated %}
+    {% for blog in blogs %}
+    <div class= "jumbotron jumbotron-fluid jumbo-color">
+        <div class="container">
+            <h2 class="display-5">{{ blog.title }}</h2>
+            <p class="lead text-dark">{{ blog.cont }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2>Welcome!</h2>
+    <h3>Login to see your blogs...</h3>
+    {% endif %}
+</div>
+{% endblock content %}
